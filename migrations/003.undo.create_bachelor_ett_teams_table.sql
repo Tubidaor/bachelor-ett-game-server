@@ -1,0 +1,1 @@
+DROP TABLE IF EXISTS bachelor_ett_teams;

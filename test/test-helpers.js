@@ -128,10 +128,10 @@ function seedUsers(db, users) {
     password: bcrypt.hashSync(user.password, 1)
   }))
   
-  return db.into('hungry_users').insert(preppedUsers)
+  return db.into('bachelor_ett_users').insert(preppedUsers)
     .then(() =>
     db.raw(
-      `SELECT setval('hungry_users_id_seq', ?)`,
+      `SELECT setval('bachelor_ett_users_id_seq', ?)`,
       [users[users.length-1].id],
     )
   )
@@ -165,19 +165,17 @@ function cleanTables(db) {
   return db.transaction(trx =>
     trx.raw(
       `TRUNCATE
-        inventory,
-        shopping_list,
-        hungry_users cascade
+        bachelor_ett_users cascade
       `
     )
     .then(() =>
       Promise.all([
-        trx.raw(`ALTER SEQUENCE inventory_id_seq minvalue 0 START WITH 1`),
-        trx.raw(`ALTER SEQUENCE shopping_list_id_seq minvalue 0 START WITH 1`),
-        trx.raw(`ALTER SEQUENCE hungry_users_id_seq minvalue 0 START WITH 1`),
-        trx.raw(`SELECT setval('inventory_id_seq', 0)`),
-        trx.raw(`SELECT setval('shopping_list_id_seq', 0)`),
-        trx.raw(`SELECT setval('hungry_users_id_seq', 0)`),
+        // trx.raw(`ALTER SEQUENCE inventory_id_seq minvalue 0 START WITH 1`),
+        // trx.raw(`ALTER SEQUENCE shopping_list_id_seq minvalue 0 START WITH 1`),
+        trx.raw(`ALTER SEQUENCE bachelor_ett_users_id_seq minvalue 0 START WITH 1`),
+        // trx.raw(`SELECT setval('inventory_id_seq', 0)`),
+        // trx.raw(`SELECT setval('shopping_list_id_seq', 0)`),
+        trx.raw(`SELECT setval('bachelor_ett_users_id_seq', 0)`),
       ])
     )
   )

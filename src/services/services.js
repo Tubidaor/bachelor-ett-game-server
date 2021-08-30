@@ -7,7 +7,7 @@ const xss = require('xss')
 const LoginServices = {
   getUserWithUserName(db, email) {
     return db
-      .from('hungry_users')
+      .from('bachelor_ett_users')
       .where({ email })
       .first()
   },
@@ -48,7 +48,7 @@ const UserServices = {
     return null
   },
   getUserWithEmail(db, email) {
-    return db('hungry_users')
+    return db('bachelor_ett_users')
       .where({ email })
       .first()
   },
@@ -58,7 +58,7 @@ const UserServices = {
   insertUser(db, newUser) {
     return db
       .insert(newUser)
-      .into('hungry_users')
+      .into('bachelor_ett_users')
       .returning('*')
       .then(([user]) => user)
   },
