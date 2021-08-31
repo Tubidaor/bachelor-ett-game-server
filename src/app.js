@@ -5,8 +5,9 @@ const cors = require('cors')
 const helmet = require('helmet')
 const { NODE_ENV } = require('./config')
 const app = express()
-const loginRouter = require("./users-router/login-router")
-const regRouter = require("./users-router/registration-router")
+const loginRouter = require('./users-router/login-router')
+const regRouter = require('./users-router/registration-router')
+const contestantsRouter = require('./contestants-router/contestants-router')
 
 const morganOption = (NODE_ENV === 'production')
   ? 'tiny'
@@ -26,8 +27,10 @@ let corsOptionsDelegate = function (req, callback) {
 }
 app.use(cors(corsOptionsDelegate)
 )
-app.use("/api",loginRouter)
-app.use("/api",regRouter)
+app.use('/api',loginRouter)
+app.use('/api',regRouter)
+app.use('/api', contestantsRouter)
+
 app.get("/", (req, res) => {
   res.send("Hello, world!")
 })

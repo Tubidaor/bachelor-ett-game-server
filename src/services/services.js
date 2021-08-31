@@ -73,13 +73,13 @@ const UserServices = {
   },
 }
 
-const ShopListServices = {
-  addShopListItem(db, shopItem) {
+const bachelorServices = {
+  addContestants(db, contestantData) {
+    console.log("contestantData", contestantData)
     return db
-      .insert(shopItem)
-      .into("shopping_list")
+      .insert(contestantData)
+      .into("bachelor_ett_contestants")
       .returning("*")
-      .then(([shopItem]) => [shopItem])
   },
 
   getShoppingList(db, user) {
@@ -238,6 +238,6 @@ const InventoryServices = {
 module.exports = {
   LoginServices,
   UserServices,
-  ShopListServices,
+  bachelorServices,
   InventoryServices
 }
