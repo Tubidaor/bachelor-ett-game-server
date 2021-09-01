@@ -139,10 +139,22 @@ function makeInventoryList() {
     }
   ]
 }
+
+function makeTeamList() {
+  return [
+    { id: 1,
+      team_id: "c6c77a9a-afa2-4da9-99b0-bad8befd5dd6",
+      team_name: "cereal",
+      user_id: "13c0713a-ec31-4378-8aad-37a4c9f4a304",
+      season: 22,
+    },
+  ]
+}
+
 function retrieveData() {
   const testUsers = makeUsersArray()
   const contestantList = makeContestantList()
-  const inventoryList = makeInventoryList()
+  const teamList = makeTeamList()
   // const genQuestions = makeGenQuestions()
   // const userQuestions = makeUserQuestions()
   // const fileUploads = makeFileUploads()
@@ -153,7 +165,7 @@ function retrieveData() {
   return {
     testUsers,
     contestantList,
-    inventoryList
+    teamList
     // genQuestions,
     // userQuestions,
     // fileUploads,

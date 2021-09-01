@@ -9,9 +9,7 @@ describe("Contestants", () => {
   let db
   const { testUsers, contestantList } = helpers.retrieveData()
   const contestantListCopy = JSON.parse(JSON.stringify(contestantList))
-
-  console.log(contestantList === contestantListCopy)
-  console.log(contestantList, contestantListCopy)
+  
   before('Make next instance', () => {
     db = knex({
       client: 'pg',

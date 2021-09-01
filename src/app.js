@@ -8,6 +8,7 @@ const app = express()
 const loginRouter = require('./users-router/login-router')
 const regRouter = require('./users-router/registration-router')
 const contestantsRouter = require('./contestants-router/contestants-router')
+const teamsRouter = require('./teams-router/teams-router')
 
 const morganOption = (NODE_ENV === 'production')
   ? 'tiny'
@@ -27,9 +28,10 @@ let corsOptionsDelegate = function (req, callback) {
 }
 app.use(cors(corsOptionsDelegate)
 )
-app.use('/api',loginRouter)
-app.use('/api',regRouter)
+app.use('/api', loginRouter)
+app.use('/api', regRouter)
 app.use('/api', contestantsRouter)
+app.use('/api', teamsRouter)
 
 app.get("/", (req, res) => {
   res.send("Hello, world!")

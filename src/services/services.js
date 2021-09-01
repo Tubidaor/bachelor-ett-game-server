@@ -75,13 +75,24 @@ const UserServices = {
 
 const bachelorServices = {
   addContestants(db, contestantData) {
-    console.log("contestantData", contestantData)
     return db
       .insert(contestantData)
       .into("bachelor_ett_contestants")
       .returning("*")
   },
-
+  addTeam(db, team) {
+    return db
+      .insert(team)
+      .into("bachelor_ett_teams")
+      .returning("*")
+      .then(([team]) => team)
+  },
+  serializeTeam(team) {
+    return {
+      team_name: xss(team.team_name),
+      season: xss(team.season),
+    }
+  },
   getShoppingList(db, user) {
     return db
       .from("shopping_list")
