@@ -87,6 +87,14 @@ const bachelorServices = {
       .returning("*")
       .then(([team]) => team)
   },
+  getTeamName(db, user_id) {
+    return db
+      .from("bachelor_ett_teams")
+      .select("*")
+      .where({user_id})
+      .then(([team]) => team)
+      // .where({user_id: user_id})
+  },
   serializeTeam(team) {
     return {
       team_name: xss(team.team_name),

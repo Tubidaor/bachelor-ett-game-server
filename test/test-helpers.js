@@ -145,7 +145,7 @@ function makeTeamList() {
     { id: 1,
       team_id: "c6c77a9a-afa2-4da9-99b0-bad8befd5dd6",
       team_name: "cereal",
-      user_id: "13c0713a-ec31-4378-8aad-37a4c9f4a304",
+      user_id: "73b8bb71-c339-4029-bc70-6204928aa77b",
       season: 22,
     },
   ]
@@ -189,14 +189,14 @@ function seedUsers(db, users) {
   )
 }
 
-function seedShoppingList(db, shoppingList) {
+function seedTeams(db, teamList) {
   return db
-    .into("shopping_list")
-    .insert(shoppingList)
+    .into("bachelor_ett_teams")
+    .insert(teamList)
     .then(() =>
       db.raw(
-        `SELECT setval('shopping_list_id_seq', ?)`,
-        [shoppingList[shoppingList.length-1].id],
+        `SELECT setval('bachelor_ett_teams_id_seq', ?)`,
+        [teamList[teamList.length-1].id],
       )
     )
 }
@@ -217,16 +217,17 @@ function cleanTables(db) {
   return db.transaction(trx =>
     trx.raw(
       `TRUNCATE
+        bachelor_ett_teams,
         bachelor_ett_users cascade
       `
     )
     .then(() =>
       Promise.all([
         // trx.raw(`ALTER SEQUENCE inventory_id_seq minvalue 0 START WITH 1`),
-        // trx.raw(`ALTER SEQUENCE shopping_list_id_seq minvalue 0 START WITH 1`),
+        trx.raw(`ALTER SEQUENCE bachelor_ett_teams_id_seq minvalue 0 START WITH 1`),
         trx.raw(`ALTER SEQUENCE bachelor_ett_users_id_seq minvalue 0 START WITH 1`),
         // trx.raw(`SELECT setval('inventory_id_seq', 0)`),
-        // trx.raw(`SELECT setval('shopping_list_id_seq', 0)`),
+        trx.raw(`SELECT setval('bachelor_ett_teams_id_seq', 0)`),
         trx.raw(`SELECT setval('bachelor_ett_users_id_seq', 0)`),
       ])
     )
@@ -248,7 +249,7 @@ module.exports = {
   retrieveData,
   seedUsers,
   cleanTables,
-  seedShoppingList,
+  seedTeams,
   seedInventoryList,
   makeAuthHeader
 }

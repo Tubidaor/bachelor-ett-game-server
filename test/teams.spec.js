@@ -75,4 +75,23 @@ describe.only('Tests for teams router', () => {
     })
   } )
 
+  context("Get teams", () => {
+    beforeEach('seed users', () => {
+      helpers.seedUsers(db, testUsers)
+      helpers.seedTeams(db, teamList)
+    })
+
+    it("1. Return team name", () => {
+      return superTest(app)
+        .get('/api/teams')
+        .set('authorization', helpers.makeAuthHeader(testUsers[0]))
+        .expect(200)
+        .expect(res => {
+          const row = res.body
+
+          expect(row.team_name).to.eql('cereal')
+        })
+    })
+  })
+
 })

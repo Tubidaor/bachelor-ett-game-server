@@ -42,5 +42,22 @@ teamsRouter
       .catch(next)
 
   })
+  .get((req, res, next) => {
+    const { user_id } = req.user
+
+    bachelorServices.getTeamName(req.app.get('db'), user_id)
+      .then(team => {
+
+        return bachelorServices.serializeTeam(team)
+      })
+      .then(serializedTeam => {
+
+        res
+          .status(200)
+          .json(serializedTeam)
+      })
+      .catch(next)
+
+  })
 
   module.exports = teamsRouter
