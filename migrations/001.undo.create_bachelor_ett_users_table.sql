@@ -1,1 +1,1 @@
-DROP TABLE IF EXISTS bachelor_ett_users_table cascade;
+DROP TABLE IF EXISTS bachelor_ett_users cascade;

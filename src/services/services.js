@@ -101,12 +101,12 @@ const bachelorServices = {
       season: xss(team.season),
     }
   },
-  getShoppingList(db, user) {
+  getContestantList(db, season) {
     return db
-      .from("shopping_list")
+      .from("bachelor_ett_contestants")
       .select("*")
-      .where({user_id: user})
-      .orderBy('product_name', 'asc')
+      .where({season})
+      .orderBy('first_name', 'asc')
   },
 
   getShoppingItem(db, product) {
@@ -126,16 +126,16 @@ const bachelorServices = {
 
 
 
-  async checkTheresList(req, res, next) {
-    const { user_id } = req.user
+  async checkTheresContestants(req, res, next) {
+    const season = 22
     // const user_id = "73b8bb71-c339-4029-bc70-6204928aa77b"
     try {
-      const entry = await ShopListServices
-        .getShoppingList(req.app.get("db"), user_id)
+      const entry = await bachelorServices
+        .getContestantList(req.app.get("db"), season)
       
       if(!entry || entry.length === 0)
         return res.status(404).json({
-          error: "Shopping list is empty."
+          error: "Contestant list is empty - please contanct your admin."
         })
 
         res.entry = entry
@@ -145,6 +145,13 @@ const bachelorServices = {
     }
   },
 
+  serializeContestantList(contestant) {
+    return {
+      contestant_id: xss(contestant.contestant_id),
+      first_name: xss(contestant.first_name),
+      last_name: xss(contestant.last_name)
+    }
+  },
 
   async checkTheresItem(req, res, next) {
     const { product } = req.body

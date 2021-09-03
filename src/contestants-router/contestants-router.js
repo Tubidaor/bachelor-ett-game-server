@@ -56,5 +56,21 @@ contestantsRouter
       )
       .catch(next)
   })
+  .get(bachelorServives.checkTheresContestants,(req, res, next) => {
+    const { user_id } = req.user
+
+    const season = 22
+
+    bachelorServices.getContestantList(req.app.get('db'), season)
+      .then(list => {
+        return list.map(li => bachelorServices.serializeContestantList(li))
+      })
+      .then(serializedList =>
+        res
+          .status(200)
+          .json(serializedList)
+      )
+      .catch(next)
+  })
 
   module.exports = contestantsRouter
