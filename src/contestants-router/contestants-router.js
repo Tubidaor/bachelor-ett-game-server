@@ -56,7 +56,7 @@ contestantsRouter
       )
       .catch(next)
   })
-  .get(bachelorServives.checkTheresContestants,(req, res, next) => {
+  .get(bachelorServices.checkTheresContestants,(req, res, next) => {
     const { user_id } = req.user
 
     const season = 22

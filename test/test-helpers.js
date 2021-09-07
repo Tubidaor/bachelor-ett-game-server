@@ -100,45 +100,6 @@ function makeContestantList() {
 
 }
 
-function makeInventoryList() {
-  return [
-    { id: 1,
-      product_id: "c6c77a9a-afa2-4da9-99b0-bad8befd5dd6",
-      product_name: "cereal",
-      user_id: "73b8bb71-c339-4029-bc70-6204928aa77b",
-      purchase_date: "01/11/2021"
-    },
-    {
-      id: 2,
-      product_id: "8613a9d3-37e5-4341-9575-01fa55691c46",
-      product_name: "milk",
-      user_id: "73b8bb71-c339-4029-bc70-6204928aa77b",
-      purchase_date: "01/11/2021"
-
-    },
-    {
-      id: 3,
-      product_id: "20597516-0bb2-4d35-846f-2f3baf6b6755",
-      product_name: "bread",
-      user_id: "73b8bb71-c339-4029-bc70-6204928aa77b",
-      purchase_date: "01/11/2021"
-    },
-    {
-      id: 4,
-      product_id: "3d20348a-4d64-4427-9509-72440e682232",
-      product_name: "orange juice",
-      user_id: "73b8bb71-c339-4029-bc70-6204928aa77b",
-      purchase_date: "01/11/2021"
-    },
-    {
-      id: 5,
-      product_id: "921bcd8e-bc82-4a3c-aeb0-8b1eaa7733d8",
-      product_name: "salmon",
-      user_id: "73b8bb71-c339-4029-bc70-6204928aa77b",
-      purchase_date: "01/11/2021"
-    }
-  ]
-}
 
 function makeTeamList() {
   return [
@@ -160,7 +121,7 @@ function makeContestantListRosters() {
   return [
     { 
       id: 1,
-      contestant_id: '314fd453-382d-4910-a632-9ee637509150',
+      contestant_id: '0ba58f65-966c-4839-9e31-1f1693aeb326',
       first_name: 'Clare',
       last_name: 'Crawley',
       season: 22
@@ -284,7 +245,7 @@ function makeRosters() {
       week: 1
     },
     {
-      id: 1,
+      id: 4,
       ranking_order: 1,
       team_id: 'c6c77a9a-afa2-4da9-99b0-bad8befd5dd6',
       user_id: '73b8bb71-c339-4029-bc70-6204928aa77b',
@@ -292,24 +253,16 @@ function makeRosters() {
       week: 1
     },
     {
-      id: 1,
-      ranking_order: 1,
+      id: 5,
+      ranking_order: 2,
       team_id: 'c6c77a9a-afa2-4da9-99b0-bad8befd5dd6',
       user_id: '73b8bb71-c339-4029-bc70-6204928aa77b',
       contestant_id: '314fd453-382d-4910-a632-9ee637509150',
       week: 1
     },
     {
-      id: 1,
-      ranking_order: 1,
-      team_id: 'c6c77a9a-afa2-4da9-99b0-bad8befd5dd6',
-      user_id: '73b8bb71-c339-4029-bc70-6204928aa77b',
-      contestant_id: '314fd453-382d-4910-a632-9ee637509150',
-      week: 1
-    },
-    {
-      id: 1,
-      ranking_order: 1,
+      id: 6,
+      ranking_order: 3,
       team_id: 'c6c77a9a-afa2-4da9-99b0-bad8befd5dd6',
       user_id: '73b8bb71-c339-4029-bc70-6204928aa77b',
       contestant_id: '314fd453-382d-4910-a632-9ee637509150',
@@ -322,6 +275,8 @@ function retrieveData() {
   const testUsers = makeUsersArray()
   const contestantList = makeContestantList()
   const teamList = makeTeamList()
+  const rostersList = makeRosters()
+  const contestantListRosters = makeContestantListRosters()
   // const genQuestions = makeGenQuestions()
   // const userQuestions = makeUserQuestions()
   // const fileUploads = makeFileUploads()
@@ -332,7 +287,9 @@ function retrieveData() {
   return {
     testUsers,
     contestantList,
-    teamList
+    teamList,
+    rostersList,
+    contestantListRosters
     // genQuestions,
     // userQuestions,
     // fileUploads,
@@ -368,14 +325,15 @@ function seedTeams(db, teamList) {
     )
 }
 
-function seedInventoryList(db, inventoryList) {
+function seedContestantsList(db, contestantsList) {
+  console.log("CL", contestantsList)
   return db
-    .into("inventory")
-    .insert(inventoryList)
+    .into("bachelor_ett_contestants")
+    .insert(contestantsList)
     .then(() => 
       db.raw(
-        `SELECT setval('inventory_id_seq', ?)`,
-        [inventoryList[inventoryList.length-1].id],
+        `SELECT setval('bachelor_ett_contestants_id_seq', ?)`,
+        [contestantsList[contestantsList.length-1].id],
       )
     )
 }
@@ -384,16 +342,17 @@ function cleanTables(db) {
   return db.transaction(trx =>
     trx.raw(
       `TRUNCATE
+        bachelor_ett_contestants,
         bachelor_ett_teams,
         bachelor_ett_users cascade
       `
     )
     .then(() =>
       Promise.all([
-        // trx.raw(`ALTER SEQUENCE inventory_id_seq minvalue 0 START WITH 1`),
+        trx.raw(`ALTER SEQUENCE bachelor_ett_contestants_id_seq minvalue 0 START WITH 1`),
         trx.raw(`ALTER SEQUENCE bachelor_ett_teams_id_seq minvalue 0 START WITH 1`),
         trx.raw(`ALTER SEQUENCE bachelor_ett_users_id_seq minvalue 0 START WITH 1`),
-        // trx.raw(`SELECT setval('inventory_id_seq', 0)`),
+        trx.raw(`SELECT setval('bachelor_ett_contestants_id_seq', 0)`),
         trx.raw(`SELECT setval('bachelor_ett_teams_id_seq', 0)`),
         trx.raw(`SELECT setval('bachelor_ett_users_id_seq', 0)`),
       ])
@@ -417,6 +376,6 @@ module.exports = {
   seedUsers,
   cleanTables,
   seedTeams,
-  seedInventoryList,
+  seedContestantsList,
   makeAuthHeader
 }

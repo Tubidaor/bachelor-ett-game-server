@@ -7,7 +7,7 @@ const { v4: uuidv4 } = require('uuid')
 
 describe("Contestants", () => {
   let db
-  const { testUsers, contestantList } = helpers.retrieveData()
+  const { testUsers, contestantList, contestantListRosters } = helpers.retrieveData()
   const contestantListCopy = JSON.parse(JSON.stringify(contestantList))
   
   before('Make next instance', () => {
@@ -24,7 +24,7 @@ describe("Contestants", () => {
 
   afterEach("Clean tables", () => helpers.cleanTables(db))
 
-  context.only('Post: contestants get posted to database', () => {
+  context('Post: contestants get posted to database', () => {
 
     beforeEach("load tables", () => {
       helpers.seedUsers(db,testUsers)
@@ -102,6 +102,23 @@ describe("Contestants", () => {
             expect(row.last_name).to.eql(contestantList[0].last_name)
             expect(res.body.length).to.eql(14)
           })
+      })
+    })
+  })
+
+  context.only('Get contestants list', () => {
+
+    describe('1: get contestants list', () => {
+      console.log("testCL", contestantListRosters)
+      beforeEach('load tables', () => {
+        helpers.seedUsers(db,testUsers)
+        helpers.seedContestantsList(db, contestantListRosters)
+      })
+      it('Gets contestants list', () => {
+        return supertest(app)
+          .get('/api/contestants')
+          .set('Authorization', helpers.makeAuthHeader(testUsers[0]))
+          .expect(200)
       })
     })
   })
