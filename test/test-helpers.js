@@ -226,14 +226,14 @@ function makeRosters() {
       ranking_order: 1,
       team_id: 'c6c77a9a-afa2-4da9-99b0-bad8befd5dd6',
       user_id: '73b8bb71-c339-4029-bc70-6204928aa77b',
-      contestant_id: '314fd453-382d-4910-a632-9ee637509150',
+      contestant_id: 'd6b177c2-b9ee-4aaa-b340-1f3fb7c1c2ad',
       week: 1
     },{
       id: 2,
       ranking_order: 2,
       team_id: 'c6c77a9a-afa2-4da9-99b0-bad8befd5dd6',
       user_id: '73b8bb71-c339-4029-bc70-6204928aa77b',
-      contestant_id: '314fd453-382d-4910-a632-9ee637509150',
+      contestant_id: 'ca174e33-da0b-4670-939d-502ee2677705',
       week: 1
     },
     {
@@ -241,7 +241,7 @@ function makeRosters() {
       ranking_order: 3,
       team_id: 'c6c77a9a-afa2-4da9-99b0-bad8befd5dd6',
       user_id: '73b8bb71-c339-4029-bc70-6204928aa77b',
-      contestant_id: '314fd453-382d-4910-a632-9ee637509150',
+      contestant_id: 'b8a6dff8-c822-495e-ac79-c6e08fe6764a',
       week: 1
     },
     {
@@ -249,7 +249,7 @@ function makeRosters() {
       ranking_order: 1,
       team_id: 'c6c77a9a-afa2-4da9-99b0-bad8befd5dd6',
       user_id: '73b8bb71-c339-4029-bc70-6204928aa77b',
-      contestant_id: '314fd453-382d-4910-a632-9ee637509150',
+      contestant_id: 'f5479109-c21c-4232-b585-6213a9f89807',
       week: 1
     },
     {
@@ -257,7 +257,7 @@ function makeRosters() {
       ranking_order: 2,
       team_id: 'c6c77a9a-afa2-4da9-99b0-bad8befd5dd6',
       user_id: '73b8bb71-c339-4029-bc70-6204928aa77b',
-      contestant_id: '314fd453-382d-4910-a632-9ee637509150',
+      contestant_id: 'f5479109-c21c-4232-b585-6213a9f89807',
       week: 1
     },
     {
@@ -265,7 +265,7 @@ function makeRosters() {
       ranking_order: 3,
       team_id: 'c6c77a9a-afa2-4da9-99b0-bad8befd5dd6',
       user_id: '73b8bb71-c339-4029-bc70-6204928aa77b',
-      contestant_id: '314fd453-382d-4910-a632-9ee637509150',
+      contestant_id: '6d8bf757-6f99-4e50-9600-485753356506',
       week: 1
     }
   ]
@@ -338,10 +338,22 @@ function seedContestantsList(db, contestantsList) {
     )
 }
 
+function seedRostersList(db, rostersList) {
+  return db
+    .into("bachelors_ett_rosters")
+    .insert(rostersList)
+    .then(() =>
+      db.raw(
+        `SELECT setval('bachelor_ett_rosters_id_seq', ?)`,
+        [rostersList[rostersList.length-1].id],
+      ))
+}
+
 function cleanTables(db) {
   return db.transaction(trx =>
     trx.raw(
       `TRUNCATE
+        bachelor_ett_rosters,
         bachelor_ett_contestants,
         bachelor_ett_teams,
         bachelor_ett_users cascade
@@ -349,9 +361,11 @@ function cleanTables(db) {
     )
     .then(() =>
       Promise.all([
+        trx.raw(`ALTER SEQUENCE bachelor_ett_rosters_id_seq minvalue 0 START WITH 1`),
         trx.raw(`ALTER SEQUENCE bachelor_ett_contestants_id_seq minvalue 0 START WITH 1`),
         trx.raw(`ALTER SEQUENCE bachelor_ett_teams_id_seq minvalue 0 START WITH 1`),
         trx.raw(`ALTER SEQUENCE bachelor_ett_users_id_seq minvalue 0 START WITH 1`),
+        trx.raw(`SELECT setval('bachelor_ett_rosters_id_seq', 0)`),
         trx.raw(`SELECT setval('bachelor_ett_contestants_id_seq', 0)`),
         trx.raw(`SELECT setval('bachelor_ett_teams_id_seq', 0)`),
         trx.raw(`SELECT setval('bachelor_ett_users_id_seq', 0)`),
@@ -377,5 +391,6 @@ module.exports = {
   cleanTables,
   seedTeams,
   seedContestantsList,
+  seedRostersList,
   makeAuthHeader
 }

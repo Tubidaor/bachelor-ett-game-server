@@ -9,6 +9,7 @@ const loginRouter = require('./users-router/login-router')
 const regRouter = require('./users-router/registration-router')
 const contestantsRouter = require('./contestants-router/contestants-router')
 const teamsRouter = require('./teams-router/teams-router')
+const rostersRouter = require('./rosters-router/rosters-router')
 
 const morganOption = (NODE_ENV === 'production')
   ? 'tiny'
@@ -32,6 +33,7 @@ app.use('/api', loginRouter)
 app.use('/api', regRouter)
 app.use('/api', contestantsRouter)
 app.use('/api', teamsRouter)
+app.use('/api', rostersRouter)
 
 app.get("/", (req, res) => {
   res.send("Hello, world!")

@@ -106,7 +106,7 @@ describe("Contestants", () => {
     })
   })
 
-  context.only('Get contestants list', () => {
+  context('Get contestants list', () => {
 
     describe('1: get contestants list', () => {
       console.log("testCL", contestantListRosters)
@@ -119,6 +119,20 @@ describe("Contestants", () => {
           .get('/api/contestants')
           .set('Authorization', helpers.makeAuthHeader(testUsers[0]))
           .expect(200)
+          .expect(res => expect(res.body.length).to.eql(13))
+      })
+    })
+    describe('2: receive error when no contestants in list', () => {
+      console.log("testCL", contestantListRosters)
+      beforeEach('load tables', () => {
+        helpers.seedUsers(db,testUsers)
+      })
+      it('error when list is empty', () => {
+        return supertest(app)
+          .get('/api/contestants')
+          .set('Authorization', helpers.makeAuthHeader(testUsers[0]))
+          .expect(404)
+          .expect({error: "Contestant list is empty. Please contact your admin."})
       })
     })
   })

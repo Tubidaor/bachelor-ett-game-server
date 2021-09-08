@@ -1,6 +1,6 @@
 const knex = require('knex')
 const app = require('../src/app')
-const superTest = require('supertest')
+const supertest = require('supertest')
 const { expect } = require('chai')
 const helpers = require('./test-helpers')
 
@@ -8,7 +8,7 @@ describe.only('Tests for teams router', () => {
   let db
 
   const { testUsers, teamList } = helpers.retrieveData()
-  console.log(testUsers, teamList)
+  
   before('Connect to db', () => {
     db = knex({
       client: 'pg',
@@ -43,7 +43,7 @@ describe.only('Tests for teams router', () => {
       season: ''
     }
     it('1: returns error when no team team', () => {
-      return superTest(app)
+      return supertest(app)
         .post('/api/teams')
         .set('authorization', helpers.makeAuthHeader(testUsers[0]))
         .send(noTeamName)
@@ -51,7 +51,7 @@ describe.only('Tests for teams router', () => {
         .expect({error: 'Please enter team name.'})
     })
     it('2: returns error when no season', () => {
-      return superTest(app)
+      return supertest(app)
         .post('/api/teams')
         .set('authorization', helpers.makeAuthHeader(testUsers[0]))
         .send(noSeason)
@@ -59,7 +59,7 @@ describe.only('Tests for teams router', () => {
         .expect({error: 'Please enter season.'})
     })
     it('3: posts team name and returns json', () => {
-      return superTest(app)
+      return supertest(app)
         .post('/api/teams')
         .set('authorization', helpers.makeAuthHeader(testUsers[0]))
         .send(teamRequest)
@@ -82,7 +82,7 @@ describe.only('Tests for teams router', () => {
     })
 
     it("1. Return team name", () => {
-      return superTest(app)
+      return supertest(app)
         .get('/api/teams')
         .set('authorization', helpers.makeAuthHeader(testUsers[0]))
         .expect(200)

@@ -135,7 +135,7 @@ const bachelorServices = {
       
       if(!entry || entry.length === 0)
         return res.status(404).json({
-          error: "Contestant list is empty - please contanct your admin."
+          error: "Contestant list is empty. Please contact your admin."
         })
 
         res.entry = entry
@@ -170,11 +170,11 @@ const bachelorServices = {
     }
   },
 
-  deleteShopItem(db, product) {
+  updateStartingLineup(db, startingLineup) {
     return db
-      .from("shopping_list")
-      .whereIn("product_id", product)
-      .del()
+      .insert(startingLineup)
+      .into("bachelor_ett_rosters")
+      .returning("*")
   }
   
 }
