@@ -326,7 +326,7 @@ function seedTeams(db, teamList) {
 }
 
 function seedContestantsList(db, contestantsList) {
-  console.log("CL", contestantsList)
+
   return db
     .into("bachelor_ett_contestants")
     .insert(contestantsList)
@@ -340,7 +340,7 @@ function seedContestantsList(db, contestantsList) {
 
 function seedRostersList(db, rostersList) {
   return db
-    .into("bachelors_ett_rosters")
+    .into("bachelor_ett_rosters")
     .insert(rostersList)
     .then(() =>
       db.raw(

@@ -176,6 +176,44 @@ const bachelorServices = {
       .into("bachelor_ett_rosters")
       .returning("*")
   }
+  ,
+  async checkRosterIsSet(req, res, next) {
+    const { user_id } = req.user
+    console.log('checkinglineup')
+    try {
+      const roster = await bachelorServices.getStartingLineup(
+        req.app.get('db'),
+        user_id
+      )
+
+        if(!roster || roster.length === 0) {
+          return res
+            .status(404)
+            .json({error: 'Please set your starting lineup.'})
+        }
+        return roster
+    }
+    catch(error) {
+      next(error)
+    }
+  },
+  getStartingLineup(db, user_id) {
+    return db
+      .select('*')
+      .from('bachelor_ett_rosters')
+      .where({user_id})
+      .orderBy("ranking_order", "desc")
+  },
+  serializeRoster(startingLineup) {
+    return {
+      id: startingLineup.id,
+      ranking_order: startingLineup.ranking_order,
+      team_id: startingLineup.team_id,
+      user_id: startingLineup.user_id,
+      contestant_id: startingLineup.contestant_id,
+      week: startingLineup.week,
+    }
+  }
   
 }
 
@@ -216,48 +254,6 @@ const InventoryServices = {
     } catch(error) {
       next(error)
     }
-  },
-  getInventoryItem(db, product_id) {
-    return db
-      .from("inventory")
-      .select(
-        "product_id",
-        "product_name",
-        "purchase_date",
-      )
-      .where({product_id})
-      .first()
-  },
-  deleteInventoryItem(db, product_id) {
-    return db
-      .from("inventory")
-      .where({product_id})
-      .del()
-  },
-  serializeInventoryList(inventory) {
-    return {
-      product_id: xss(inventory.product_id),
-      product_name: xss(inventory.product_name),
-      purchase_date: xss(inventory.purchase_date)
-    }
-  },
-  getInventory(db, user_id) {
-    return db
-      .from("inventory")
-      .select(
-        "product_id",
-        "product_name",
-        "purchase_date",
-      )
-      .where({user_id})
-      .orderBy("product_name", "asc")
-  },
-  addToInventory(db, inventoryList) {
-    return db
-      .insert(inventoryList)
-      .into("inventory")
-      .returning("*")
-      .then(([inventoryList]) => [inventoryList])
   }
 }
 

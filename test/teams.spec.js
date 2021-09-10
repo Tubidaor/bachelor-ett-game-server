@@ -4,7 +4,7 @@ const supertest = require('supertest')
 const { expect } = require('chai')
 const helpers = require('./test-helpers')
 
-describe.only('Tests for teams router', () => {
+describe('Tests for teams router', () => {
   let db
 
   const { testUsers, teamList } = helpers.retrieveData()
@@ -26,8 +26,7 @@ describe.only('Tests for teams router', () => {
   context("Posting Teams", () => {
 
     beforeEach('Seed users', () => helpers.seedUsers(db, testUsers))
-    console.log('teamlist', teamList)
-
+    
     const teamRequest = {
       team_name: "testTeam",
       season: 22

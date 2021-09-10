@@ -109,7 +109,6 @@ describe("Contestants", () => {
   context('Get contestants list', () => {
 
     describe('1: get contestants list', () => {
-      console.log("testCL", contestantListRosters)
       beforeEach('load tables', () => {
         helpers.seedUsers(db,testUsers)
         helpers.seedContestantsList(db, contestantListRosters)
@@ -123,7 +122,7 @@ describe("Contestants", () => {
       })
     })
     describe('2: receive error when no contestants in list', () => {
-      console.log("testCL", contestantListRosters)
+
       beforeEach('load tables', () => {
         helpers.seedUsers(db,testUsers)
       })

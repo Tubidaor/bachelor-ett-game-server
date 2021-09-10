@@ -20,5 +20,25 @@ rostersRouter
       .catch(next)
 
   })
+  .get(bachelorServices.checkRosterIsSet, (req, res, next) => {
+
+    const { user_id } = req.user
+
+    bachelorServices.getStartlingLineup(req.app.get('db', user_id)
+      .then(startingLineup => {
+        console.log('starginlineup', startingLineup)
+        return startingLineup.map(starter =>
+          bachelorServices.serializeStarters(starter)
+        )}
+      )
+    )
+    .then(serializedStartingLineup =>
+      res
+        .status(200)
+        .json(serializedStartingLineup)
+    )
+    .catch(next)
+
+  })
 
   module.exports = rostersRouter
