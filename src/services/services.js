@@ -177,12 +177,11 @@ const bachelorServices = {
       .returning("*")
   }
   ,
-  async checkRosterIsSet(req, res, next) {
-    const { user_id } = req.user
+  async checkRosterIsSet(db, user_id) {
     console.log('checkinglineup')
     try {
       const roster = await bachelorServices.getStartingLineup(
-        req.app.get('db'),
+        db,
         user_id
       )
 
@@ -191,6 +190,7 @@ const bachelorServices = {
             .status(404)
             .json({error: 'Please set your starting lineup.'})
         }
+        console.log("roster", roster)
         return roster
     }
     catch(error) {
@@ -198,13 +198,14 @@ const bachelorServices = {
     }
   },
   getStartingLineup(db, user_id) {
+    console.log('getting lineup')
     return db
       .select('*')
       .from('bachelor_ett_rosters')
       .where({user_id})
-      .orderBy("ranking_order", "desc")
+      .orderBy("ranking_order", "asc")
   },
-  serializeRoster(startingLineup) {
+  serializeStarters(startingLineup) {
     return {
       id: startingLineup.id,
       ranking_order: startingLineup.ranking_order,

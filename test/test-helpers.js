@@ -247,24 +247,24 @@ function makeRosters() {
     {
       id: 4,
       ranking_order: 1,
-      team_id: 'c6c77a9a-afa2-4da9-99b0-bad8befd5dd6',
-      user_id: '73b8bb71-c339-4029-bc70-6204928aa77b',
+      team_id: '921bcd8e-bc82-4a3c-aeb0-8b1eaa7733d8',
+      user_id: '13c0713a-ec31-4378-8aad-37a4c9f4a304',
       contestant_id: 'f5479109-c21c-4232-b585-6213a9f89807',
       week: 1
     },
     {
       id: 5,
       ranking_order: 2,
-      team_id: 'c6c77a9a-afa2-4da9-99b0-bad8befd5dd6',
-      user_id: '73b8bb71-c339-4029-bc70-6204928aa77b',
+      team_id: '921bcd8e-bc82-4a3c-aeb0-8b1eaa7733d8',
+      user_id: '13c0713a-ec31-4378-8aad-37a4c9f4a304',
       contestant_id: 'f5479109-c21c-4232-b585-6213a9f89807',
       week: 1
     },
     {
       id: 6,
       ranking_order: 3,
-      team_id: 'c6c77a9a-afa2-4da9-99b0-bad8befd5dd6',
-      user_id: '73b8bb71-c339-4029-bc70-6204928aa77b',
+      team_id: '921bcd8e-bc82-4a3c-aeb0-8b1eaa7733d8',
+      user_id: '13c0713a-ec31-4378-8aad-37a4c9f4a304',
       contestant_id: '6d8bf757-6f99-4e50-9600-485753356506',
       week: 1
     }
