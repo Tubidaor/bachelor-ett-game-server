@@ -153,23 +153,6 @@ const bachelorServices = {
     }
   },
 
-  async checkTheresItem(req, res, next) {
-    const { product } = req.body
-    try {
-      const entry = await ShopListServices
-        .getShoppingItem(req.app.get("db"), product)
-      
-      if(!entry || entry.length === 0)
-        return res.status(404).json({
-          error: 'Shopping item does not exist.'
-        })
-
-        return entry
-    } catch(error) {
-      next(error)
-    }
-  },
-
   updateStartingLineup(db, startingLineup) {
     return db
       .insert(startingLineup)
@@ -207,15 +190,49 @@ const bachelorServices = {
   },
   serializeStarters(startingLineup) {
     return {
-      id: startingLineup.id,
-      ranking_order: startingLineup.ranking_order,
-      team_id: startingLineup.team_id,
-      user_id: startingLineup.user_id,
-      contestant_id: startingLineup.contestant_id,
-      week: startingLineup.week,
+      id: xss(startingLineup.id),
+      ranking_order: xss(startingLineup.ranking_order),
+      team_id: xss(startingLineup.team_id),
+      user_id: xss(startingLineup.user_id),
+      contestant_id: xss(startingLineup.contestant_id),
+      week: xss(startingLineup.week)
+    }
+  },
+  createCategory(db, categories) {
+    return db
+      .insert(categories)
+      .into('bachelor_ett_categories')
+      .returning('*')
+  },
+  async checkForCategories(req, res, next) {
+    
+    try {
+      const category = await bachelorServices.getCategories(req.app.get('db'))
+      if(!category || category.length === 0) {
+        return res
+          .status(404)
+          .json({error: 'No categories available. Contact your admin.'})
+      }
+      res.category = category
+      next()
+    }
+    catch(error) {
+      next(error)
+    }
+  },
+  getCategories(db) {
+    return db
+      .select('*')
+      .from('bachelor_ett_categories')
+  },
+  serializeCategories(category) {
+    return {
+      id: xss(category.id),
+      category_id: xss(category.category_id),
+      category: xss(category.category),
+      point_value: xss(category.point_value)
     }
   }
-  
 }
 
 const InventoryServices = {

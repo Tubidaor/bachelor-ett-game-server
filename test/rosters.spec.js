@@ -83,7 +83,7 @@ describe("Test for rosters endpoint", () => {
       helpers.seedRostersList(db, rostersList)
     })
 
-    it.only('1: Get staring line up status 200.', () => {
+    it('1: Get staring line up status 200.', () => {
       return supertest(app)
         .get('/api/rosters')
         .set('Authorization', helpers.makeAuthHeader(testUsers[0]))

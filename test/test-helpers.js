@@ -270,6 +270,160 @@ function makeRosters() {
     }
   ]
 }
+function makeCategories() {
+  return [
+    {
+      id: 1,
+      category_id: '37f3a587-7985-4645-912f-24bceb7cd199',
+      category: 'bachelor-ett-proposes',
+      point_value: 200,
+    },
+    {
+      id: 2,
+      category_id: '2f22d43f-e506-4c98-bff0-ac8fdd33bcab',
+      category: 'Sex (confirmed or group consensus)',
+      point_value: 100,
+    },
+    {
+      id: 3,
+      category_id: '5aebf50d-09a5-4ec7-a82c-94e19ab9903d',
+      category: 'Katie says "I love you" (or variants)',
+      point_value: 50,
+    },
+    {
+      id: 4,
+      category_id: 'a0c0c1de-b81f-435b-8593-b3d2fb8ccc69',
+      category: 'Involved in physical altercation',
+      point_value: 25,
+    },
+    {
+      id: 5,
+      category_id: '4cc686ae-a6f5-4b41-876c-e34ac0801678',
+      category: '1 on 1 date',
+      point_value: 20,
+    },
+    {
+      id: 6,
+      category_id: '9e9b8916-c880-414f-9314-fa4bd490caec',
+      category: 'Receives a rose pre-ceremony',
+      point_value: 20,
+    },
+    {
+      id: 7,
+      category_id: '963236c4-5661-4a9a-9feb-dbde0786d0ea',
+      category: 'Kiss',
+      point_value: 0,
+    },
+    {
+      id: 8,
+      category_id: 'b82fec52-c16a-483f-8161-a5484d098851',
+      category: 'Destroys property',
+      point_value: 15,
+    },
+    {
+      id: 9,
+      category_id: '15a77cea-903b-434d-94c5-55953a2a05aa',
+      category: 'Chaos points',
+      point_value: 0,
+    },
+    {
+      id: 10,
+      category_id: '759f2993-961a-4cfd-9edd-e3206a6d3526',
+      category: 'Provides a service to humanity',
+      point_value: 0,
+    },
+    {
+      id: 11,
+      category_id: 'f4d306be-50d3-4b2f-a564-4afbc9c78e1d',
+      category: 'Receives a rose',
+      point_value: 10,
+    },
+    {
+      id: 12,
+      category_id: '9ca5be2d-e122-4d8a-8481-00065dad8668',
+      category: `Interrupts another contestant's alone time`,
+      point_value: 10,
+    },
+    {
+      id: 13,
+      category_id: '21cefa9c-2a7d-4481-94fc-8665b8b9b3b2',
+      category: 'Is obviously drunk',
+      point_value: 10,
+    },
+    {
+      id: 14,
+      category_id: 'b1bc1db0-db1d-4d78-b000-d01390e8be20',
+      category: 'Talks about another contestant to bachelor-ett',
+      point_value: 5,
+    },
+    {
+      id: 15,
+      category_id: '6f8cac49-7f5d-406d-bc66-d445f3f28d5b',
+      category: 'Group date',
+      point_value: 5,
+    },
+    {
+      id: 16,
+      category_id: '044fefcc-0083-43e9-a34f-287fec0a20fa',
+      category: 'bachelor-ett-says could see himself with him/her',
+      point_value: 5,
+    },
+    {
+      id: 17,
+      category_id: 'fb0d107a-0044-4b07-b1ef-c5f7dfb285d2',
+      category: 'Refers to sexual anatomy',
+      point_value: 5,
+    },
+    {
+      id: 18,
+      category_id: 'a65dea19-a3ac-44cc-8910-55c37a146376',
+      category: 'Gets one-on-one time in a group setting',
+      point_value: 5,
+    },
+    {
+      id: 19,
+      category_id: 'ec64f6b8-e3db-471d-a010-a9e6e4d3d482',
+      category: 'Parent takehome category 1',
+      point_value: 0,
+    },
+    {
+      id: 20,
+      category_id: 'fd8fbc30-445f-4992-9fb7-27da3938a25c',
+      category: 'Parent takehome category 2',
+      point_value: 0,
+    },
+    {
+      id: 21,
+      category_id: '0b71db51-1a23-41f6-988a-70b9b89e6912',
+      category: 'Ugly cries in the limo leaving',
+      point_value: -5,
+    },
+    {
+      id: 22,
+      category_id: '0f0d7b99-5e24-47ec-9001-b1d41138d52a',
+      category: 'Fights with Katie (verbal or otherwise)',
+      point_value: -10,
+    },
+    {
+      id: 23,
+      category_id: '68f0fe41-45bc-4930-a254-7c3d1369e8c9',
+      category: 'Is a overly sensitive',
+      point_value: -10,
+    },
+    {
+      id: 24,
+      category_id: 'be220e93-f27b-45ea-b653-82f792191242',
+      category: 'Says "I love you" (or variants) first',
+      point_value: -10,
+    },
+    {
+      id: 25,
+      category_id: 'c78f770f-2802-4d96-b743-2b90da318498',
+      category: 'Leaves outside of a rose ceremony',
+      point_value: -50,
+    },
+  ]
+}
 
 function retrieveData() {
   const testUsers = makeUsersArray()
@@ -277,6 +431,7 @@ function retrieveData() {
   const teamList = makeTeamList()
   const rostersList = makeRosters()
   const contestantListRosters = makeContestantListRosters()
+  const categoryList = makeCategories()
   // const genQuestions = makeGenQuestions()
   // const userQuestions = makeUserQuestions()
   // const fileUploads = makeFileUploads()
@@ -289,13 +444,8 @@ function retrieveData() {
     contestantList,
     teamList,
     rostersList,
-    contestantListRosters
-    // genQuestions,
-    // userQuestions,
-    // fileUploads,
-    // testRelationships,
-    // testAnswers,
-    // userRelationship
+    contestantListRosters,
+    categoryList
   }
 }
 function seedUsers(db, users) {
@@ -315,7 +465,7 @@ function seedUsers(db, users) {
 
 function seedTeams(db, teamList) {
   return db
-    .into("bachelor_ett_teams")
+    .into('bachelor_ett_teams')
     .insert(teamList)
     .then(() =>
       db.raw(
@@ -328,7 +478,7 @@ function seedTeams(db, teamList) {
 function seedContestantsList(db, contestantsList) {
 
   return db
-    .into("bachelor_ett_contestants")
+    .into('bachelor_ett_contestants')
     .insert(contestantsList)
     .then(() => 
       db.raw(
@@ -340,7 +490,7 @@ function seedContestantsList(db, contestantsList) {
 
 function seedRostersList(db, rostersList) {
   return db
-    .into("bachelor_ett_rosters")
+    .into('bachelor_ett_rosters')
     .insert(rostersList)
     .then(() =>
       db.raw(
@@ -349,10 +499,21 @@ function seedRostersList(db, rostersList) {
       ))
 }
 
+function seedCategories(db, categories) {
+  return db
+    .into('bachelor_ett_categories')
+    .insert(categories)
+    .then(() =>
+    db.raw(
+      `SELECT setval('bachelor_ett_categories_id_seq', ?)`,
+      [categories[categories.length-1].id],
+    ))
+}
 function cleanTables(db) {
   return db.transaction(trx =>
     trx.raw(
       `TRUNCATE
+        bachelor_ett_categories,
         bachelor_ett_rosters,
         bachelor_ett_contestants,
         bachelor_ett_teams,
@@ -361,10 +522,12 @@ function cleanTables(db) {
     )
     .then(() =>
       Promise.all([
+        trx.raw(`ALTER SEQUENCE bachelor_ett_categories_id_seq minvalue 0 START WITH 1`),
         trx.raw(`ALTER SEQUENCE bachelor_ett_rosters_id_seq minvalue 0 START WITH 1`),
         trx.raw(`ALTER SEQUENCE bachelor_ett_contestants_id_seq minvalue 0 START WITH 1`),
         trx.raw(`ALTER SEQUENCE bachelor_ett_teams_id_seq minvalue 0 START WITH 1`),
         trx.raw(`ALTER SEQUENCE bachelor_ett_users_id_seq minvalue 0 START WITH 1`),
+        trx.raw(`SELECT setval('bachelor_ett_categories_id_seq', 0)`),
         trx.raw(`SELECT setval('bachelor_ett_rosters_id_seq', 0)`),
         trx.raw(`SELECT setval('bachelor_ett_contestants_id_seq', 0)`),
         trx.raw(`SELECT setval('bachelor_ett_teams_id_seq', 0)`),
@@ -392,5 +555,6 @@ module.exports = {
   seedTeams,
   seedContestantsList,
   seedRostersList,
+  seedCategories,
   makeAuthHeader
 }
