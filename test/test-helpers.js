@@ -401,7 +401,7 @@ function makeCategories() {
     {
       id: 22,
       category_id: '0f0d7b99-5e24-47ec-9001-b1d41138d52a',
-      category: 'Fights with Katie (verbal or otherwise)',
+      category: 'Fights with Bachelor-ett (verbal or otherwise)',
       point_value: -10,
     },
     {
@@ -421,6 +421,411 @@ function makeCategories() {
       category_id: 'c78f770f-2802-4d96-b743-2b90da318498',
       category: 'Leaves outside of a rose ceremony',
       point_value: -50,
+    },
+  ]
+}
+
+function makeTestScores() {
+  return [
+    {
+      id: 1,
+      week: 1,
+      category_id: '37f3a587-7985-4645-912f-24bceb7cd199',
+      score: 0,
+      contestant_id: 'd6b177c2-b9ee-4aaa-b340-1f3fb7c1c2ad',
+      season: 2
+    },
+    {
+      id: 2,
+      week: 1,
+      category_id: '2f22d43f-e506-4c98-bff0-ac8fdd33bcab',
+      score: 0,
+      contestant_id: 'd6b177c2-b9ee-4aaa-b340-1f3fb7c1c2ad',
+      season: 2
+    },
+    {
+      id: 3,
+      week: 1,
+      category_id: '5aebf50d-09a5-4ec7-a82c-94e19ab9903d',
+      score: 0,
+      contestant_id: 'd6b177c2-b9ee-4aaa-b340-1f3fb7c1c2ad',
+      season: 2
+    },
+    {
+      id: 4,
+      week: 1,
+      category_id: 'a0c0c1de-b81f-435b-8593-b3d2fb8ccc69',
+      score: 25,
+      contestant_id: 'd6b177c2-b9ee-4aaa-b340-1f3fb7c1c2ad',
+      season: 2
+    },
+    {
+      id: 5,
+      week: 1,
+      category_id: '4cc686ae-a6f5-4b41-876c-e34ac0801678',
+      score: 0,
+      contestant_id: 'd6b177c2-b9ee-4aaa-b340-1f3fb7c1c2ad',
+      season: 2
+    },
+    {
+      id: 6,
+      week: 1,
+      category_id: '9e9b8916-c880-414f-9314-fa4bd490caec',
+      score: 0,
+      contestant_id: 'd6b177c2-b9ee-4aaa-b340-1f3fb7c1c2ad',
+      season: 2
+    },
+    {
+      id: 7,
+      week: 1,
+      category_id: '963236c4-5661-4a9a-9feb-dbde0786d0ea',
+      score: 0,
+      contestant_id: 'd6b177c2-b9ee-4aaa-b340-1f3fb7c1c2ad',
+      season: 2
+    },
+    {
+      id: 8,
+      week: 1,
+      category_id: 'b82fec52-c16a-483f-8161-a5484d098851',
+      score: 15,
+      contestant_id: 'd6b177c2-b9ee-4aaa-b340-1f3fb7c1c2ad',
+      season: 2
+    },
+    {
+      id: 9,
+      week: 1,
+      category_id: '15a77cea-903b-434d-94c5-55953a2a05aa',
+      score: 0,
+      contestant_id: 'd6b177c2-b9ee-4aaa-b340-1f3fb7c1c2ad',
+      season: 2
+    },
+    {
+      id: 10,
+      week: 1,
+      category_id: '759f2993-961a-4cfd-9edd-e3206a6d3526',
+      score: 0,
+      contestant_id: 'd6b177c2-b9ee-4aaa-b340-1f3fb7c1c2ad',
+      season: 2
+    },
+    {
+      id: 11,
+      week: 1,
+      category_id: 'f4d306be-50d3-4b2f-a564-4afbc9c78e1d',
+      score: 10,
+      contestant_id: 'd6b177c2-b9ee-4aaa-b340-1f3fb7c1c2ad',
+      season: 2
+    },
+    {
+      id: 12,
+      week: 1,
+      category_id: '9ca5be2d-e122-4d8a-8481-00065dad8668',
+      score: 10,
+      contestant_id: 'd6b177c2-b9ee-4aaa-b340-1f3fb7c1c2ad',
+      season: 2
+    },
+    {
+      id: 13,
+      week: 1,
+      category_id: '21cefa9c-2a7d-4481-94fc-8665b8b9b3b2',
+      score: 10,
+      contestant_id: 'd6b177c2-b9ee-4aaa-b340-1f3fb7c1c2ad',
+      season: 2
+    },
+    {
+      id: 14,
+      week: 1,
+      category_id: 'b1bc1db0-db1d-4d78-b000-d01390e8be20',
+      score: 5,
+      contestant_id: 'd6b177c2-b9ee-4aaa-b340-1f3fb7c1c2ad',
+      season: 2
+    },
+    {
+      id: 15,
+      week: 1,
+      category_id: '6f8cac49-7f5d-406d-bc66-d445f3f28d5b',
+      score: 0,
+      contestant_id: 'd6b177c2-b9ee-4aaa-b340-1f3fb7c1c2ad',
+      season: 2
+    },
+    {
+      id: 16,
+      week: 1,
+      category_id: '044fefcc-0083-43e9-a34f-287fec0a20fa',
+      score: 5,
+      contestant_id: 'd6b177c2-b9ee-4aaa-b340-1f3fb7c1c2ad',
+      season: 2
+    },
+    {
+      id: 17,
+      week: 1,
+      category_id: 'fb0d107a-0044-4b07-b1ef-c5f7dfb285d2',
+      score: 5,
+      contestant_id: 'd6b177c2-b9ee-4aaa-b340-1f3fb7c1c2ad',
+      season: 2
+    },
+    {
+      id: 18,
+      week: 1,
+      category_id: 'a65dea19-a3ac-44cc-8910-55c37a146376',
+      score: 0,
+      contestant_id: 'd6b177c2-b9ee-4aaa-b340-1f3fb7c1c2ad',
+      season: 2
+    },
+    {
+      id: 19,
+      week: 1,
+      category_id: 'ec64f6b8-e3db-471d-a010-a9e6e4d3d482',
+      score: 0,
+      contestant_id: 'd6b177c2-b9ee-4aaa-b340-1f3fb7c1c2ad',
+      season: 2
+    },
+    {
+      id: 20,
+      week: 1,
+      category_id: 'fd8fbc30-445f-4992-9fb7-27da3938a25c',
+      score: 0,
+      contestant_id: 'd6b177c2-b9ee-4aaa-b340-1f3fb7c1c2ad',
+      season: 2
+    },
+    {
+      id: 21,
+      week: 1,
+      category_id: '0b71db51-1a23-41f6-988a-70b9b89e6912',
+      score: 0,
+      contestant_id: 'd6b177c2-b9ee-4aaa-b340-1f3fb7c1c2ad',
+      season: 2
+    },
+    {
+      id: 22,
+      week: 1,
+      category_id: '0f0d7b99-5e24-47ec-9001-b1d41138d52a',
+      score: -10,
+      contestant_id: 'd6b177c2-b9ee-4aaa-b340-1f3fb7c1c2ad',
+      season: 2
+    },
+    {
+      id: 23,
+      week: 1,
+      category_id: '68f0fe41-45bc-4930-a254-7c3d1369e8c9',
+      score: 0,
+      contestant_id: 'd6b177c2-b9ee-4aaa-b340-1f3fb7c1c2ad',
+      season: 2
+    },
+    {
+      id: 24,
+      week: 1,
+      category_id: 'be220e93-f27b-45ea-b653-82f792191242',
+      score: 0,
+      contestant_id: 'd6b177c2-b9ee-4aaa-b340-1f3fb7c1c2ad',
+      season: 2
+    },
+    {
+      id: 25,
+      week: 1,
+      category_id: 'c78f770f-2802-4d96-b743-2b90da318498',
+      score: -50,
+      contestant_id: 'd6b177c2-b9ee-4aaa-b340-1f3fb7c1c2ad',
+      season: 2
+    },
+    {
+      id: 1,
+      week: 1,
+      category_id: '37f3a587-7985-4645-912f-24bceb7cd199',
+      score: 0,
+      contestant_id: 'ca174e33-da0b-4670-939d-502ee2677705',
+      season: 2
+    },
+    {
+      id: 2,
+      week: 1,
+      category_id: '2f22d43f-e506-4c98-bff0-ac8fdd33bcab',
+      score: 0,
+      contestant_id: 'ca174e33-da0b-4670-939d-502ee2677705',
+      season: 2
+    },
+    {
+      id: 3,
+      week: 1,
+      category_id: '5aebf50d-09a5-4ec7-a82c-94e19ab9903d',
+      score: 0,
+      contestant_id: 'ca174e33-da0b-4670-939d-502ee2677705',
+      season: 2
+    },
+    {
+      id: 4,
+      week: 1,
+      category_id: 'a0c0c1de-b81f-435b-8593-b3d2fb8ccc69',
+      score: 25,
+      contestant_id: 'ca174e33-da0b-4670-939d-502ee2677705',
+      season: 2
+    },
+    {
+      id: 5,
+      week: 1,
+      category_id: '4cc686ae-a6f5-4b41-876c-e34ac0801678',
+      score: 0,
+      contestant_id: 'ca174e33-da0b-4670-939d-502ee2677705',
+      season: 2
+    },
+    {
+      id: 6,
+      week: 1,
+      category_id: '9e9b8916-c880-414f-9314-fa4bd490caec',
+      score: 0,
+      contestant_id: 'ca174e33-da0b-4670-939d-502ee2677705',
+      season: 2
+    },
+    {
+      id: 7,
+      week: 1,
+      category_id: '963236c4-5661-4a9a-9feb-dbde0786d0ea',
+      score: 0,
+      contestant_id: 'ca174e33-da0b-4670-939d-502ee2677705',
+      season: 2
+    },
+    {
+      id: 8,
+      week: 1,
+      category_id: 'b82fec52-c16a-483f-8161-a5484d098851',
+      score: 15,
+      contestant_id: 'ca174e33-da0b-4670-939d-502ee2677705',
+      season: 2
+    },
+    {
+      id: 9,
+      week: 1,
+      category_id: '15a77cea-903b-434d-94c5-55953a2a05aa',
+      score: 0,
+      contestant_id: 'ca174e33-da0b-4670-939d-502ee2677705',
+      season: 2
+    },
+    {
+      id: 10,
+      week: 1,
+      category_id: '759f2993-961a-4cfd-9edd-e3206a6d3526',
+      score: 0,
+      contestant_id: 'ca174e33-da0b-4670-939d-502ee2677705',
+      season: 2
+    },
+    {
+      id: 11,
+      week: 1,
+      category_id: 'f4d306be-50d3-4b2f-a564-4afbc9c78e1d',
+      score: 10,
+      contestant_id: 'ca174e33-da0b-4670-939d-502ee2677705',
+      season: 2
+    },
+    {
+      id: 12,
+      week: 1,
+      category_id: '9ca5be2d-e122-4d8a-8481-00065dad8668',
+      score: 10,
+      contestant_id: 'ca174e33-da0b-4670-939d-502ee2677705',
+      season: 2
+    },
+    {
+      id: 13,
+      week: 1,
+      category_id: '21cefa9c-2a7d-4481-94fc-8665b8b9b3b2',
+      score: 10,
+      contestant_id: 'ca174e33-da0b-4670-939d-502ee2677705',
+      season: 2
+    },
+    {
+      id: 14,
+      week: 1,
+      category_id: 'b1bc1db0-db1d-4d78-b000-d01390e8be20',
+      score: 5,
+      contestant_id: 'ca174e33-da0b-4670-939d-502ee2677705',
+      season: 2
+    },
+    {
+      id: 15,
+      week: 1,
+      category_id: '6f8cac49-7f5d-406d-bc66-d445f3f28d5b',
+      score: 0,
+      contestant_id: 'ca174e33-da0b-4670-939d-502ee2677705',
+      season: 2
+    },
+    {
+      id: 16,
+      week: 1,
+      category_id: '044fefcc-0083-43e9-a34f-287fec0a20fa',
+      score: 5,
+      contestant_id: 'ca174e33-da0b-4670-939d-502ee2677705',
+      season: 2
+    },
+    {
+      id: 17,
+      week: 1,
+      category_id: 'fb0d107a-0044-4b07-b1ef-c5f7dfb285d2',
+      score: 5,
+      contestant_id: 'ca174e33-da0b-4670-939d-502ee2677705',
+      season: 2
+    },
+    {
+      id: 18,
+      week: 1,
+      category_id: 'a65dea19-a3ac-44cc-8910-55c37a146376',
+      score: 0,
+      contestant_id: 'ca174e33-da0b-4670-939d-502ee2677705',
+      season: 2
+    },
+    {
+      id: 19,
+      week: 1,
+      category_id: 'ec64f6b8-e3db-471d-a010-a9e6e4d3d482',
+      score: 0,
+      contestant_id: 'ca174e33-da0b-4670-939d-502ee2677705',
+      season: 2
+    },
+    {
+      id: 20,
+      week: 1,
+      category_id: 'fd8fbc30-445f-4992-9fb7-27da3938a25c',
+      score: 0,
+      contestant_id: 'ca174e33-da0b-4670-939d-502ee2677705',
+      season: 2
+    },
+    {
+      id: 21,
+      week: 1,
+      category_id: '0b71db51-1a23-41f6-988a-70b9b89e6912',
+      score: 0,
+      contestant_id: 'ca174e33-da0b-4670-939d-502ee2677705',
+      season: 2
+    },
+    {
+      id: 22,
+      week: 1,
+      category_id: '0f0d7b99-5e24-47ec-9001-b1d41138d52a',
+      score: -10,
+      contestant_id: 'ca174e33-da0b-4670-939d-502ee2677705',
+      season: 2
+    },
+    {
+      id: 23,
+      week: 1,
+      category_id: '68f0fe41-45bc-4930-a254-7c3d1369e8c9',
+      score: 0,
+      contestant_id: 'ca174e33-da0b-4670-939d-502ee2677705',
+      season: 2
+    },
+    {
+      id: 24,
+      week: 1,
+      category_id: 'be220e93-f27b-45ea-b653-82f792191242',
+      score: 0,
+      contestant_id: 'ca174e33-da0b-4670-939d-502ee2677705',
+      season: 2
+    },
+    {
+      id: 25,
+      week: 1,
+      category_id: 'c78f770f-2802-4d96-b743-2b90da318498',
+      score: -50,
+      contestant_id: 'ca174e33-da0b-4670-939d-502ee2677705',
+      season: 2
     },
   ]
 }

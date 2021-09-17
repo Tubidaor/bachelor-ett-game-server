@@ -11,6 +11,7 @@ const contestantsRouter = require('./contestants-router/contestants-router')
 const teamsRouter = require('./teams-router/teams-router')
 const rostersRouter = require('./rosters-router/rosters-router')
 const adminRouter = require('./admin-router/admin-router')
+const scoresRouter = require('./scores-router/scores-router')
 
 const morganOption = (NODE_ENV === 'production')
   ? 'tiny'
@@ -36,6 +37,7 @@ app.use('/api', contestantsRouter)
 app.use('/api', teamsRouter)
 app.use('/api', rostersRouter)
 app.use('/api', adminRouter)
+app.use('/api', scoresRouter)
 
 app.get("/", (req, res) => {
   res.send("Hello, world!")
