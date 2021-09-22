@@ -13,11 +13,15 @@ scoresRouter
 
     bachelorServices.postScores(req.app.get('db'), scores)
       .then(scores => {
-        if(scores) {
-          res
-            .status(201)
-            .json({message: 'Scores have been submitted.'})
+        if(!scores) {
+          return res
+            .status(404)
+            .json({error: 'Something went wrong, please try again.'})
         }
+
+        res
+          .status(201)
+          .json({message: 'Scores have been submitted.'})
       })
       .catch(next)
   })

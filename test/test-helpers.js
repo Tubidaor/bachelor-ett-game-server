@@ -837,6 +837,7 @@ function retrieveData() {
   const rostersList = makeRosters()
   const contestantListRosters = makeContestantListRosters()
   const categoryList = makeCategories()
+  const contestantScores = makeTestScores()
   // const genQuestions = makeGenQuestions()
   // const userQuestions = makeUserQuestions()
   // const fileUploads = makeFileUploads()
@@ -850,9 +851,11 @@ function retrieveData() {
     teamList,
     rostersList,
     contestantListRosters,
-    categoryList
+    categoryList,
+    contestantScores
   }
 }
+
 function seedUsers(db, users) {
   const preppedUsers = users.map(user => ({
     ...user,
