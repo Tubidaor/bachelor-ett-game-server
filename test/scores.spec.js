@@ -7,7 +7,7 @@ const helpers = require('./test-helpers')
 
 describe('Scores end points', () => {
   let db
-  let { testUsers, contestantScores } = helpers.retrieveData()
+  let { testUsers, contestantScores, categoryList, contestantListRosters } = helpers.retrieveData()
 
   before('create connection to DB', () => {
   
@@ -25,18 +25,40 @@ describe('Scores end points', () => {
   afterEach('Clean up tables', () => helpers.cleanTables(db))
 
   context('Successful scores upload', () => {
-    beforeEach('load tables', () => helpers.seedUsers(db, testUsers)
-    )
+    beforeEach('load tables', () => {
+      helpers.seedUsers(db, testUsers)
+      helpers.seedCategories(db, categoryList)
+      helpers.seedContestantsList(db, contestantListRosters)
+    })
     const reqAttemptBody = {
       scores: contestantScores
     }
-    console.log('testScores', contestantScores)
-    it.only('1: scores are uploaded and confirmed.', () => {
+    it('1: scores are uploaded and confirmed.', () => {
       return supertest(app)
         .post('/api/scores')
         .set('authorization', helpers.makeAuthHeader(testUsers[0]))
         .send(reqAttemptBody)
         .expect(201)
+        .expect({message: "Scores have been submitted."})
+    })
+  })
+
+  context('Unsuccessful scores upload', () => {
+    beforeEach('load tables', () => {
+      helpers.seedUsers(db, testUsers)
+      helpers.seedCategories(db, categoryList)
+      helpers.seedContestantsList(db, contestantListRosters)
+    })
+    const reqAttemptBody = {
+      scores: ""
+    }
+    it.only('1: no scores are uploaded and error received.', () => {
+      return supertest(app)
+        .post('/api/scores')
+        .set('authorization', helpers.makeAuthHeader(testUsers[0]))
+        .send(reqAttemptBody)
+        .expect(404)
+        .expect({error: 'Something went wrong, please try again.'})
     })
   })
 

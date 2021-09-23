@@ -4,7 +4,7 @@ const supertest = require('supertest')
 const { expect } = require('chai')
 const helpers = require('./test-helpers')
 
-describe.only('Categories endpoint', () => {
+describe('Categories endpoint', () => {
   let db
   const { testUsers, categoryList } = helpers.retrieveData()
   // testUsers,
@@ -35,7 +35,7 @@ describe.only('Categories endpoint', () => {
     const reqAttemptBody = {
       categories: loadCats
     }
-    console.log("cat list", categoryList)
+
     it('1 Posts categories and returns 201', () => {
       return supertest(app)
         .post('/api/admin')

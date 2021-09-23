@@ -232,7 +232,14 @@ const bachelorServices = {
       category: xss(category.category),
       point_value: xss(category.point_value)
     }
+  },
+  postScores(db, scores) {
+    return db
+      .insert(scores)
+      .into("bachelor_ett_scores")
+      .returning("*")
   }
+
 }
 
 const InventoryServices = {
